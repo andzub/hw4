@@ -8,10 +8,22 @@ for ($i=0; $i<=1000; $i++) {
 echo '</tr></table>';
 
 echo '<hr>';
-echo 'Задача 3<br>';
+
+echo 'Задача 3 <br>';
 $arrayRand = array();
-for ($i=1; $i<=1000; $i++) {
+for ($i=0; $i<=999; $i++) {
   echo $arrayRand[] = rand() . ' ';
 }
 echo '<br>';
 print_r(array_count_values($arrayRand));
+
+echo '<hr>';
+
+echo 'Задача 4 <br>';
+$arrayNum = array();
+for ($i=0; $i<=99; $i++) {
+  echo $arrayNum[] = rand() . ' ';
+  if ($arrayNum % 5 == 0) {
+    echo 'число крано 5<br>';
+  }
+}
