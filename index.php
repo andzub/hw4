@@ -38,3 +38,17 @@ if (strlen($string) > 10) {
 } else {
   echo str_pad($result,  11, "ооооо");
 }
+
+echo '<hr>';
+
+echo 'Задача 6 <br>';
+$arrNum = array();
+for ($i=0; $i<=9; $i++) {
+  echo $arrNum[] = rand() . ' ';
+}
+$oneNum = rand();
+if ($arrNum == $oneNum) {
+  echo '<br>'. $oneNum . ' Это число входит в данный массив';
+} else {
+  echo '<br>'. $oneNum . ' Это число не входит в данный массив';
+}
