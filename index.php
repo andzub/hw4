@@ -52,3 +52,19 @@ if ($arrNum == $oneNum) {
 } else {
   echo '<br>'. $oneNum . ' Это число не входит в данный массив';
 }
+
+echo '<hr>';
+
+echo 'Задача 7 <br>';
+$arrKeyValue = array();
+for ($i=0; $i<=99; $i++) {
+  echo $arrKeyValue[rand()] = rand() . ' ';
+}
+echo '<br>ключи = ';
+foreach ($arrKeyValue as $key => $value) {
+  echo $key . ' ';
+;}
+echo '<br>значения = ';
+foreach ($arrKeyValue as $value) {
+  echo $value . ' ';
+;}
