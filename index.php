@@ -27,3 +27,14 @@ for ($i=0; $i<=99; $i++) {
     echo 'число крано 5<br>';
   }
 }
+
+echo '<hr>';
+
+echo 'Задача 5 <br>';
+$string = "hello, world!!!";
+if (strlen($string) > 10) {
+  $result = substr($string, 0, 5);
+  echo $result . ' ';
+} else {
+  echo str_pad($result,  11, "ооооо");
+}
