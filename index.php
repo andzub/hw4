@@ -110,3 +110,185 @@ echo '<hr>';
 echo 'Задача 11 <br>';
 $arr = array(1,2,3,4,5,6,7,8,9,);
 echo 'Результат произведения равен = '.$sum = $arr[0] + $arr[1] + $arr[2] + $arr[3] + $arr[4] + $arr[5] + $arr[6] + $arr[7] + $arr[8] + $arr[9];
+
+echo '<hr>';
+// Нарисовать треугольник и числ при помощи php.
+// Результат должен быть примерно такого вида
+echo 'Задача 12 <br>';
+echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 <br>';
+echo '&nbsp;&nbsp;&nbsp;&nbsp;11 <br>';
+echo '&nbsp;&nbsp;&nbsp;111 <br>';
+echo '&nbsp;&nbsp;1111 <br>';
+echo '&nbsp;11111 <br>';
+echo '111111 <br>';
+
+echo '<hr>';
+// Нарисовать ромб из чисел, используя php. Принцип почти такой же, как в задаче 12
+echo 'Задача 13 <br>';
+echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 <br>';
+echo '&nbsp;&nbsp;&nbsp;&nbsp;11 <br>';
+echo '&nbsp;&nbsp;&nbsp;111 <br>';
+echo '&nbsp;&nbsp;1111 <br>';
+echo '&nbsp;11111 <br>';
+echo '111111 <br>';
+echo '&nbsp;11111 <br>';
+echo '&nbsp;&nbsp;1111 <br>';
+echo '&nbsp;&nbsp;&nbsp;111 <br>';
+echo '&nbsp;&nbsp;&nbsp;&nbsp;11 <br>';
+echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 <br>';
+
+echo '<hr>';
+// Создать файл index.php в котором выполнить html разметку будущего сайта.
+echo 'Задача 14 <br>';
+
+include 'menu.php';
+include 'products.php';
+echo '<br><br>';
+?>
+  <!DOCTYPE html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Разметка</title>
+    <meta name="description" content="The Html5">
+    <meta name="author" content="SitePoint">
+    <!--[if lt IE 9]><script src="js/html5shim.js"></script><![endif]-->
+  </head>
+  <style>
+    li {
+      list-style: none;
+    }
+
+    header {
+      width: 100%;
+      height: 100px;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+    }
+
+    h1 {
+      padding: 5px 10px;
+      background: #000;
+      color: #fff;
+      text-transform: uppercase;
+      margin: 0 20px;
+    }
+
+    nav {
+      width: 100%;
+      text-align: center;
+    }
+
+    nav ul {
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 10px;
+    }
+
+    main {
+      width: 100%;
+      min-height: 600px;
+      border: 1px solid #ddd;
+      display: flex;
+    }
+
+    .content {
+      max-width: 1000px;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .side {
+      width: 200px;
+      min-height: 100%;
+      border: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+    }
+    .product {
+      width: 300px;
+      height: auto;
+      box-shadow: 0px 5px 10px #000;
+      margin: 10px;
+      padding: 5px;
+    }
+    .productImg {
+      width: 100%;
+      height: 150px;
+      background: #ddd;
+    }
+    button {
+      width: 80px;
+      height: 40px;
+    }
+    footer {
+      width: 100%;
+      height: 100px;
+      background: #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <header>
+    <h1>Лого</h1>
+    <nav>
+      <ul>
+        <?php foreach ($menu as $value): ?>
+          <?php if ($value -> visible): ?>
+            <?php if ($value -> menu_id == 1): ?>
+              <li>
+                <a href="<?php echo $value -> url ?>"><?php echo $value -> name ?></a>
+              </li>
+            <?php endif; ?>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </ul>
+    </nav>
+  </header>
+  <main role="main">
+    <div class="side">
+      <article>Side bar</article>
+    </div>
+    <div class="content">
+      <?php foreach ($products as $product): ?>
+        <?php if ($product -> visible): ?>
+          <div class="product">
+              <p class="productDate"><?php echo date('m.d.y', strtotime($product -> created)); ?></p>
+              <div class="productImg">
+                <img src="#" alt="img">
+              </div>
+              <div class="productInfo">
+                <a href="<?php echo $product -> url; ?>" class="productTitle"><?php echo $product -> name; ?></a>
+                <p class="previewPrice"><?php echo ceil($product -> variant -> price); ?> грн.</p>
+                <?php if (count($product -> variants) > 1): ?>
+                  <select class="productSelect">
+                    <?php foreach ($product -> variants as $item) :?>
+                        <?php if ($item -> id != $product -> variant -> id): ?>
+                            <option value="#"><?php echo ceil($item -> price); ?> грн.</option>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                  </select>
+                <?php endif; ?>
+              <div class="productControl">
+              <div class="productReadmore">
+                <p class="productReadmore">Подробнее</p>
+              </div>
+              <button type="button">
+                <p>Купить</p>
+              </button>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </div>
+  </main>
+  <footer>
+    <section id="author">Футер</section>
+  </footer>
